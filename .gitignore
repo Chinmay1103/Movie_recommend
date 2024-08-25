@@ -1,5 +1,32 @@
+Skip to content
+Navigation Menu
+Sign in
+entbappy
+/
+Movie-Recommender-System-Using-Machine-Learning
+Public
+Code
+Issues
+1
+Pull requests
+1
+Actions
+Projects
+Security
+Commit
+structure added
+ master
+@entbappy
+entbappy committed on Nov 13, 2021
+0 parents
+commit c1b0add
+Showing 9 changed files with 212 additions and 0 deletions.
+ 143 changes: 143 additions & 0 deletions143  
+.gitignore
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,143 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
+_pycache_/
 *.py[cod]
 *$py.class
 
@@ -20,6 +47,7 @@ parts/
 sdist/
 var/
 wheels/
+pip-wheel-metadata/
 share/python-wheels/
 *.egg-info/
 .installed.cfg
@@ -49,7 +77,6 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
-cover/
 
 # Translations
 *.mo
@@ -72,7 +99,6 @@ instance/
 docs/_build/
 
 # PyBuilder
-.pybuilder/
 target/
 
 # Jupyter Notebook
@@ -83,9 +109,7 @@ profile_default/
 ipython_config.py
 
 # pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
-# .python-version
+.python-version
 
 # pipenv
 #   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
@@ -94,25 +118,8 @@ ipython_config.py
 #   install all needed dependencies.
 #Pipfile.lock
 
-# poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-#poetry.lock
-
-# pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
-#pdm.lock
-#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
-#   in version control.
-#   https://pdm.fming.dev/latest/usage/project/#working-with-version-control
-.pdm.toml
-.pdm-python
-.pdm-build/
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
-__pypackages__/
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+_pypackages_/
 
 # Celery stuff
 celerybeat-schedule
@@ -148,15 +155,131 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# pytype static type analyzer
-.pytype/
+# if using pycharm
+.idea
 
-# Cython debug symbols
-cython_debug/
+# if using VScode
+.vscode
 
-# PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
+# add secret keys or API keys here
+configs/secrets.yaml
+
+# add your env folder here if its there
+
+
+
+ 21 changes: 21 additions & 0 deletions21  
+LICENSE
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,21 @@
+MIT License
+
+Copyright (c) 2021 Bappy Ahmed
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+ 2 changes: 2 additions & 0 deletions2  
+README.md
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,2 @@
+# Project: Movie Recommender System
+
+ 6 changes: 6 additions & 0 deletions6  
+app.py
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,6 @@
+'''
+Author: Bappy Ahmed
+Email: entbappy73@gmail.com
+Date: 2021-Nov-15
+'''
+
+ 2 changes: 2 additions & 0 deletions2  
+data/.gitignore
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,2 @@
+tmdb_5000_credits.csv
+tmdb_5000_movies.csv
+ 10 changes: 10 additions & 0 deletions10  
+requirements.txt
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,10 @@
+### dependency
+streamlit
+numpy
+plotly
+pandas
+matplotlib
+scikit-learn
+
+### local packages -
+-e . 
+ 26 changes: 26 additions & 0 deletions26  
+setup.py
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,26 @@
+from setuptools import setup
+
+with open("README.md", "r", encoding="utf-8") as f:
+    long_description = f.read()
+
+## edit below variables as per your requirements -
+REPO_NAME = "Movie Recommender System"
+AUTHOR_USER_NAME = "entbappy"
+SRC_REPO = "src"
+LIST_OF_REQUIREMENTS = ['streamlit','numpy','plotly','pandas','scikit-learn','matplotlib']
+
+
+setup(
+    name=SRC_REPO,
+    version="0.0.1",
+    author=AUTHOR_USER_NAME,
+    description="A small package for Movie Recommender System",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url=f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",
+    author_email="entbappy73@gmail.com",
+    packages=[SRC_REPO],
+    license="MIT",
+    python_requires=">=3.7",
+    install_requires=LIST_OF_REQUIREMENTS
+)
+ 1 change: 1 addition & 0 deletions1  
+src/_init_.py
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1 @@
+
+ 1 change: 1 addition & 0 deletions1  
+src/utils/_init_.py
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1 @@
+
+0 comments on commit c1b0add
+Please sign in to comment.
+Footer
+© 2024 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact
+Manage cookies
+Do not share my personal information
+structure added · entbappy/Movie-Recommender-System-Using-Machine-Learning@c1b0add · GitHub
